@@ -24,3 +24,18 @@ cc_binary(
         "@glfw-prebuilt-win64//:glfw-static",
     ],
 )
+
+cc_binary(
+    name = "glfw-win64-dll",
+    srcs = [
+        ":glfw-window.cc",
+    ],
+    linkopts = [
+        "gdi32.lib",
+        "shell32.lib",
+        "user32.lib",
+    ],
+    deps = [
+        "@glfw-prebuilt-win64//:glfw-dynamic",
+    ],
+)

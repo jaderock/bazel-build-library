@@ -14,6 +14,16 @@ cc_library(
     ],
 )
 
-#    ["include/GLFW/glfw3.h",
-    #    "include/GLFW/glfw3native.h",
-    #],
+cc_import(
+    name = "glfw-dll-import",
+    interface_library = "lib-vc2022/glfw3dll.lib",
+    shared_library = "lib-vc2022/glfw3.dll",
+)
+
+cc_library(
+    name = "glfw-dynamic",
+    includes = ["include",],
+    deps = [
+        ":glfw-dll-import",
+    ],
+)
