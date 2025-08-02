@@ -1,6 +1,7 @@
 module(name = "glfw-bazel")
 
 bazel_dep(name = "rules_cc", version = "0.1.4")
+bazel_dep(name = "platforms", version = "1.0.0")
 
 http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
@@ -12,3 +13,10 @@ http_archive(
     urls = ["https://github.com/glfw/glfw/releases/download/3.4/glfw-3.4.zip"],
 )
 
+http_archive(
+    name = "glfw-prebuilt-win64",
+    build_file = "@glfw-bazel//:glfw-win64.BUILD",
+    sha256 = "54efa829400f2a0537f742b2b3bdd74e437bb4f2f048e4b7d3c5557d11a611e6",
+    strip_prefix = "glfw-3.4.bin.WIN64",
+    urls = ["https://github.com/glfw/glfw/releases/download/3.4/glfw-3.4.bin.WIN64.zip"],
+)
