@@ -1,0 +1,4 @@
+MODULE.bazel.lock
+bazel-bin/
+bazel-glfw/
+bazel-out/
